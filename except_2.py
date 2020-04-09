@@ -11,12 +11,11 @@ directories = {
 }
 
 def check():
-    try:
-        for doc in documents:
-            #for i in doc:
+    for doc in documents:
+        try:
             print(doc['name'])
-    except KeyError:
-        print(f' У документа с номером {doc["number"]} НЕТ ПОЛЯ NAME')
+        except KeyError:
+            print(f' У документа с номером {doc["number"]} НЕТ ПОЛЯ NAME')
 
 
 def people(numbers):

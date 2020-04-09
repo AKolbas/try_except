@@ -1,34 +1,31 @@
 
+first_enter = input('Введите два положительных числа и знак в формате: + 2 5 через пробел \n')
+assert len(list(first_enter.split())) == 3, 'Вы ввели неправильное количество аргументов'
 
-
-first_enter = input('Введите числа и знак в формате: + 2 5 \n')
-
-
-#print(type(first_enter))
-try:
-    c = first_enter[0]
-    a = int(first_enter.split ()[1])
-    b = int(first_enter.split ()[2])
-except IndexError:
-    print('Введены не все аргументы!')
+symbol = first_enter[0]
+assert symbol in ['+', '-', '/', '*'], 'Неверный знак!'
 
 try:
-    assert c in ['+', '-', '/', '*'], 'Неверный знак!'
-    assert a >= 0 and  b >= 0, 'одно из значений меньше 0'
+    num_1 = int(first_enter.split()[1])
+    num_2 = int(first_enter.split()[2])
+    assert num_1 >= 0 and num_2 >=0, 'Одно из значений отрицательное'
+except ValueError:
+    print('Вы ввели не число!')
 
-    if c == '+':
-        result = a + b
-    elif c == '-':
-        result = a - b
-    elif c == '*':
-        result = a * b
-    elif c == '/':
-        result = round((a / b), 2)
+#assert num_1 >= 0 and  num_2 >= 0, 'одно из значений меньше 0'
+
+try:
+    if symbol == '+':
+        result = num_1 + num_2
+    elif symbol == '-':
+        result = num_1 - num_2
+    elif symbol == '*':
+        result = num_1 * num_2
+    elif symbol == '/':
+        result = round((num_1 / num_2), 2)
     print(result)
 except ZeroDivisionError:
     print('Деление на 0')
-except ValueError:
-    print('Операции над строками недопустимы!')
 except NameError:
     print('Проверьте правильность ввода!')
 
